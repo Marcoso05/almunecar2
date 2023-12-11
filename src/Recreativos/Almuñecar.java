@@ -14,7 +14,7 @@ import Diseño.Colores;
 
 /**
  *
- * @author marcos
+ * @author developer
  */
 
 public class Almuñecar {
