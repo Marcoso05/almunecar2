@@ -54,7 +54,7 @@ public class Terminal {
             return euros*FACTOR_CONVERSION;
         }
         //Sumar los creditos a la tarjeta
-        public void sumarCreditos (Tarjeta tar, int valorSumar){
+        private void sumarCreditos (Tarjeta tar, int valorSumar){
             tar.setCreditos(tar.getCreditos()+valorSumar);
         }
         //Introduce la tarjeta y un valor en euros y se encarga de cargar el valor en creditos en la tarjeta

@@ -17,7 +17,11 @@ public class Premio {
     public Premio (String nombre, int ticketsNecesarios, int recuentoStock) {
         this.nombre = nombre;
         this.ticketsNecesarios = ticketsNecesarios;
-        this.recuentoStock = recuentoStock;
+        try{
+            this.setRecuentoStock(recuentoStock);
+        }catch(NumeroNegativo ex){
+            System.out.println(ex.getMessage());
+        }
     }
     
     public String getNombre() {
