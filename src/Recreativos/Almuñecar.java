@@ -32,6 +32,8 @@ public class Almuñecar {
         Terminal terminal = new Terminal (osito,pelotas,gominolas);
         
         Tarjeta tarjeta = new Tarjeta();
+        Tarjeta tarjeta1 = new Tarjeta();
+        System.out.println(tarjeta.toString());
         
         
 
