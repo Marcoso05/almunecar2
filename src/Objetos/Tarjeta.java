@@ -13,10 +13,12 @@ public class Tarjeta {
     private int creditos;
     private int tickets;
     private int numTarjeta;
-    private static int contador = 1;
+    private static int contador=1;
     
-    public Tarjeta(){
-        numTarjeta = contador++;
+    public Tarjeta(int creditos){
+        this.creditos = creditos;
+        this.tickets = 0;
+        this.numTarjeta = contador++;
     }
     
     public int getCreditos(){
