@@ -20,4 +20,5 @@ public class Colores {
     public static final String PURPLE = "\u001B[35m";
     public static final String CYAN = "\u001B[36m";
     public static final String WHITE = "\u001B[37m";
+    public static final String FONDO_MORADO = "\u001B[45m";
 }
