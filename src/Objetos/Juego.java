@@ -41,7 +41,7 @@ public class Juego {
     public void jugar(Tarjeta x){
         Random r = new Random();
         if(this.creditosNecesarios>x.getCreditos()){
-            System.out.println("No tiene tickets suficientes");
+            System.out.println("No tiene creditos suficientes");
         }
         else{
             x.setCreditos(x.getCreditos()-this.creditosNecesarios);

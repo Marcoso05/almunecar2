@@ -146,13 +146,18 @@ public class Terminal {
         return tarjeta;
     }
 
-    @Override
-    public String toString() {
+    public String verPremios(){
         String premios = "";
         for (int i = 0; i < this.premiosAsociados.length; i++) {
             premios = premios + "\n\t" + this.premiosAsociados[i];
             premios = premios + " ";
         }
+        return premios;
+    }
+    
+    @Override
+    public String toString() {
+        String premios = verPremios();
         return ("El terminal: " + this.getNumTerminal() + "\nCon factor de conversion " + this.getFACTOR_CONVERSION() + "\nCon los premios: " + premios);
     }
 
