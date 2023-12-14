@@ -148,9 +148,11 @@ public class Terminal {
 
     public String verPremios(){
         String premios = "";
+        int contador=0;
         for (int i = 0; i < this.premiosAsociados.length; i++) {
-            premios = premios + "\n\t" + this.premiosAsociados[i];
+            premios = premios + "\n\t"+ (contador+1) + ": "+ this.premiosAsociados[i];
             premios = premios + " ";
+            contador++;
         }
         return premios;
     }

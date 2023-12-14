@@ -48,6 +48,15 @@ public class Juego {
             x.setTickets(x.getTickets()+r.nextInt(95)+5);
         }
     }
+    public boolean comprobarCreditosNecesarios(Tarjeta tar) {
+        boolean posible = false;
+        if (this.getCreditosNecesarios() <= tar.getCreditos()) {
+            posible = true;
+        } else {
+            posible = false;
+        }
+        return posible;
+    }
     
     @Override
     public String toString(){

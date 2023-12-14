@@ -1,9 +1,9 @@
 package Recreativos;
 
 import java.util.Scanner;
-import Excepciones.NumeroNegativo;
 import Objetos.*;
 import Diseño.Colores;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 
 /*
@@ -22,16 +22,24 @@ public class Almuñecar {
      */
     public static void main(String[] args) {
         //Variables y objetos para el uso programa
+        //Objeto para leer datos por teclado
+        Scanner teclado = new Scanner(System.in);
         //Variable para la seleccion de funciones del programa
-        int opcion;
+        int opcion = -1;
         //Variable para almacenar las tarjetas creadas en el array de tarjetas
         int contadorTarjetas = 0;
+        //Variable para almacenar los juegos creados en el array de juegos
+        int contadorJuegos = 0;
+        //Variable para almacenar los premios creados en el array de premios
+        int contadorPremios = 0;
+        //Variable para almacenar los termianles creados en el array de terminales
+        int contadorTerminales = 0;
         //Cantidad de dinero que se desea cargar en las tarjetas
         int dineroCargar = 0;
         //Esta variable sustituye a la accion de introducir las tarjetas intruduciendo su posicion en el array
         int tarjetaSeleccionada;
-        //Objeto para leer datos por teclado
-        Scanner teclado = new Scanner(System.in);
+        //Esta variable sustituye a la accion de introducir las tarjetas intruduciendo su posicion en el array
+        int premioSeleccionado;
 
         //Arrays para el almacen de los objetos que va a disponer nuestro recreativo
         Tarjeta tarjetas[] = new Tarjeta[100];
@@ -41,87 +49,238 @@ public class Almuñecar {
 
         //Creacion de los pobjetos
         //Juegos
-        Juego numero = new Juego("Numero", 2);
+        juegos[contadorJuegos] = new Juego("Numero", 2);
+        contadorJuegos++;
         //Premios
-        Premio osito = new Premio("Osito", 100, 50);
-        Premio pelotas = new Premio("Pelota", 50, 100);
-        Premio gominolas = new Premio("Gominolas", 10, 200);
+        premios[contadorPremios] = new Premio("Osito", 100, 50);
+        contadorPremios++;
+        premios[contadorPremios] = new Premio("Pelota", 50, 100);
+        contadorPremios++;
+        premios[contadorPremios] = new Premio("Gominolas", 10, 200);
+        contadorPremios++;
         //Terminales
-        Terminal terminal = new Terminal(osito, pelotas, gominolas);
+        terminales[contadorTerminales] = new Terminal(premios[0], premios[1], premios[2]);
 
         System.out.println(Colores.FONDO_MORADO + Colores.WHITE + "Bienvenido a las recreativas ALMUÑECAR!!!" + Colores.RESET);
 
         System.out.print("\nEstas son las opciones: ");
         do {
-            System.out.println("\nOpcion 1: Crear tarjeta. \nOpcion 2: Introducir creditos. \nOpcion 3: Ver los datos de su tarjeta.\nOpcion 4: Coste de la partida \nOpcion 5: Jugar. \nOpcion 6: Informacion de los premios. \nOpcion 7: Salir del terminal.");
+            System.out.println("\n1: Crear tarjeta. \n2: Introducir creditos. \n3: Ver los datos de su tarjeta.\n4: Opciones de juego. \n5: Informacion de los premios. \n6: Salir del terminal.");
             System.out.print("Que opcion desea: ");
-            opcion = teclado.nextInt();
+            try {
+                opcion = teclado.nextInt();
 
-            switch (opcion) {
-                case 1:
-                    tarjetas[contadorTarjetas] = new Tarjeta(0);
-                    contadorTarjetas++;
-                    break;
-                case 2:
-                    try {
-                        System.out.println("Introduzca su tarjeta");
-                        tarjetaSeleccionada = teclado.nextInt();
-                        
-                        if (tarjetas[tarjetaSeleccionada] == null) {
-                            System.out.println(Colores.RED + "La tarjeta seleccionada no es valida" + Colores.RESET);
-                        } else {
-                            System.out.println("Cuanto quieres cargar en su tarjeta?");
-                            dineroCargar = teclado.nextInt();
-                            terminal.cargarTarjeta(tarjetas[tarjetaSeleccionada], dineroCargar);
-                        }
-                } catch (InputMismatchException ex) {
-                    System.out.println(Colores.RED + "El valor introducido no es correcto" + Colores.RESET);
-                }
-                break;
-                case 3:
-                    System.out.println("Introduzca su tarjeta");
-                    tarjetaSeleccionada = teclado.nextInt();
-                    System.out.println(tarjetas[tarjetaSeleccionada].toString());
-                    break;
-                case 4:
-                    System.out.println("Introduzca su tarjeta");
-                    tarjetaSeleccionada = teclado.nextInt();
-                    System.out.print("Se necesitan " + numero.getCreditosNecesarios() + " para jugar, usted posee " + tarjetas[tarjetaSeleccionada].getCreditos());
-                    if (numero.getCreditosNecesarios() > tarjetas[tarjetaSeleccionada].getCreditos()) {
-                        System.out.println(" no dispone de los creditos necesarios");
-                    }
-                    break;
-                case 5:
-                    System.out.println(numero.toString() + "\n");
-                    numero.jugar(tarjetas[contadorTarjetas]);
-                    System.out.println(tarjetas[contadorTarjetas].toString());
-                    break;
-                case 6:
-                    while (opcion != 4) {
-                        System.out.println("Elija una de las siguientes opciones: \nOpcion 1: Ver premios. \nOpcion 2: Canjear premios. \nOpcion 3: Ver Stock. \nOpcion 4: Volver.");
-                        opcion = teclado.nextInt();
-                        switch (opcion) {
-                            case 1:
-                                System.out.println(terminal.verPremios());
-                                break;
-                            case 2:
-                                System.out.println("Que premio desea obtener");
-                                break;
-                            case 3:
+                switch (opcion) {
+                    case 1:
+                        //Dinero a cargar
+                        System.out.print("Con cuanto dinero quieres cargar la nueva tarjeta: ");
 
-                                break;
-                            case 4:
+                        dineroCargar = teclado.nextInt();
 
-                                break;
-                        }
+                        //Crear una nueva tarjeta
+                        tarjetas[contadorTarjetas] = terminales[0].crearTarjeta(dineroCargar);
+                        contadorTarjetas++;
+
                         break;
-                    }
-                case 7:
-                    break;
-                default:
-                    System.out.println(Colores.RED + "Opcion seleccionada no valida" + Colores.RESET);
+                    case 2:
 
+                        System.out.print("Introduzca su tarjeta: ");
+
+                        tarjetaSeleccionada = teclado.nextInt();
+
+                        if (tarjetaSeleccionada < 0 || tarjetaSeleccionada >= tarjetas.length) {
+                            System.out.println(Colores.RED + "La tarjeta seleccionada no es válida" + Colores.RESET);
+                        } else {
+                            if (tarjetas[tarjetaSeleccionada] == null) {
+                                System.out.println(Colores.RED + "La tarjeta seleccionada no es válida" + Colores.RESET);
+                            } else {
+                                System.out.print("Cuánto dinero desea cargar en su tarjeta: ");
+                                dineroCargar = teclado.nextInt();
+
+                                if (dineroCargar <= 0) {
+                                    System.out.println(Colores.RED + "La cantidad de dinero a cargar debe ser positiva" + Colores.RESET);
+                                } else {
+                                    terminales[0].cargarTarjeta(tarjetas[tarjetaSeleccionada], dineroCargar);
+                                    System.out.println("¡Carga exitosa!");
+                                }
+                            }
+                        }
+
+                        break;
+                    case 3:
+
+                        System.out.print("Introduzca su tarjeta: ");
+                        tarjetaSeleccionada = teclado.nextInt();
+                        if (tarjetaSeleccionada < 0 || tarjetaSeleccionada >= tarjetas.length) {
+                            System.out.println(Colores.RED + "La tarjeta seleccionada no es válida" + Colores.RESET);
+                        } else {
+                            if (tarjetas[tarjetaSeleccionada] == null) {
+                                System.out.println(Colores.RED + "La tarjeta seleccionada no es válida" + Colores.RESET);
+
+                            } else {
+                                System.out.println(tarjetas[tarjetaSeleccionada].toString());
+                            }
+                        }
+
+                        break;
+                    case 4:
+                        int seleccion = -1;
+                        do {
+                            System.out.println("\nEstas son las opciones de los juegos");
+                            System.out.println("1: Ver los juegos\n2: Comprobar si puedo jugar\n3: Jugar");
+
+                            System.out.print("Que opcion desea: ");
+
+                            seleccion = teclado.nextInt();
+
+                            switch (seleccion) {
+                                case 1:
+                                    System.out.println();
+                                    System.out.println("Estos son los juegos disponibles");
+                                    System.out.println(mostrarJuegosDisponibles(juegos));
+                                    break;
+                                case 2:
+
+                                    System.out.print("Introduce tu tarjeta: ");
+
+                                    tarjetaSeleccionada = teclado.nextInt();
+                                    if (tarjetaSeleccionada < 0 || tarjetaSeleccionada >= tarjetas.length) {
+                                        System.out.println(Colores.RED + "La tarjeta seleccionada no es válida" + Colores.RESET);
+                                    } else {
+                                        if (tarjetas[tarjetaSeleccionada] == null) {
+                                            System.out.println(Colores.RED + "La tarjeta seleccionada no es válida" + Colores.RESET);
+                                        } else {
+                                            System.out.println();
+                                            System.out.println("Estos son los juegos disponibles");
+                                            System.out.println(mostrarJuegosDisponibles(juegos));
+                                            System.out.print("Cual es el juego que quieres comprobar: ");
+                                            seleccion = teclado.nextInt() - 1;
+                                            if (seleccion < 0 || seleccion >= juegos.length) {
+                                                System.out.println(Colores.RED + "El juego seleccionada no es válida" + Colores.RESET);
+                                            } else {
+                                                if (juegos[seleccion] == null) {
+                                                    System.out.println(Colores.RED + "El juego seleccionada no es válida" + Colores.RESET);
+                                                } else {
+                                                    if (juegos[seleccion].comprobarCreditosNecesarios(tarjetas[tarjetaSeleccionada])) {
+                                                        System.out.println("Puede jugar y le quedaran: " + (tarjetas[tarjetaSeleccionada].getCreditos() - juegos[seleccion].getCreditosNecesarios()));
+                                                    } else {
+                                                        System.out.println("No dispone de los creditos necesarios");
+                                                    }
+
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    break;
+                                case 3:
+                                    System.out.print("Introduce tu tarjeta: ");
+
+                                    tarjetaSeleccionada = teclado.nextInt();
+                                    if (tarjetaSeleccionada < 0 || tarjetaSeleccionada >= tarjetas.length) {
+                                        System.out.println(Colores.RED + "La tarjeta seleccionada no es válida" + Colores.RESET);
+                                    } else {
+                                        if (tarjetas[tarjetaSeleccionada] == null) {
+                                            System.out.println(Colores.RED + "La tarjeta seleccionada no es válida" + Colores.RESET);
+                                        } else {
+                                            System.out.println();
+                                            System.out.println("Estos son los juegos disponibles");
+                                            System.out.println(mostrarJuegosDisponibles(juegos));
+                                            System.out.print("Cual es el juego que quieres jugar: ");
+                                            seleccion = teclado.nextInt() - 1;
+                                            if (seleccion < 0 || seleccion >= juegos.length) {
+                                                System.out.println(Colores.RED + "El jeugo seleccionada no es válida" + Colores.RESET);
+                                            } else {
+                                                if (juegos[seleccion] == null) {
+                                                    System.out.println(Colores.RED + "El juego seleccionada no es válida" + Colores.RESET);
+                                                } else {
+                                                    if (juegos[seleccion].comprobarCreditosNecesarios(tarjetas[tarjetaSeleccionada])) {
+                                                        juegos[seleccion].jugar(tarjetas[tarjetaSeleccionada]);
+                                                    } else {
+                                                        System.out.println("No dispone de los creditos necesarios");
+                                                    }
+
+                                                }
+                                            }
+                                        }
+                                    }
+                                case 4:
+                                    break;
+                                default:
+                                    System.out.println(Colores.RED+"Opcion no valida"+Colores.RESET);
+                                    
+                            }
+
+                        } while (seleccion != 4);
+                        break;
+
+                    case 5:
+                        do {
+                            System.out.println("\n\tEstas son las opciones de los premios: \n\t1: Ver premios \n\t2: Canjear premios. \n\t3: Ver Stock. \n\t4: Volver.");
+                            System.out.print("Que accion desea realizar: ");
+                            opcion = teclado.nextInt();
+                            switch (opcion) {
+                                case 1:
+                                    System.out.println("Estos son los premios disponibles");
+                                    System.out.println(terminales[0].verPremios());
+                                    break;
+                                case 2:
+                                    System.out.print("Introduce tu tarjeta: ");
+
+                                    tarjetaSeleccionada = teclado.nextInt();
+                                    if (tarjetaSeleccionada < 0 || tarjetaSeleccionada >= tarjetas.length) {
+                                        System.out.println(Colores.RED + "La tarjeta seleccionada no es válida" + Colores.RESET);
+                                    } else {
+                                        if (tarjetas[tarjetaSeleccionada] == null) {
+                                            System.out.println(Colores.RED + "La tarjeta seleccionada no es válida" + Colores.RESET);
+                                        } else {
+                                            System.out.println("Estos son los premios disponibles");
+                                            System.out.println(terminales[0].verPremios());
+                                            System.out.print("Que premio desea obtener: ");
+                                            
+                                            premioSeleccionado = teclado.nextInt()-1;
+                                            if (premioSeleccionado >3 || premioSeleccionado <0) {
+                                                    System.out.println(Colores.RED + "El premio seleccionada no es válida" + Colores.RESET);
+                                                } else {
+                                                    terminales[0].canjearPremios(premios[premioSeleccionado], tarjetas[tarjetaSeleccionada]); 
+
+                                                }
+                                            }
+                                        }
+                                    System.out.println();
+                                    break;
+                                case 3:
+                                    
+                                    break;
+                                case 4:
+
+                                    break;
+                            }
+                           
+                        }while (opcion != 4);
+                    case 6:
+                        break;
+                    default:
+                        System.out.println(Colores.RED + "Opcion seleccionada no valida" + Colores.RESET);
+
+                }
+            } catch (InputMismatchException ex) {
+                System.out.println(Colores.RED + "El valor introducido no es valido, porfavot introduzca un numero entero" + Colores.RESET);
+                teclado.nextLine();
             }
-        } while (opcion != 7);
+        } while (opcion != 6);
     }
+
+    public static String mostrarJuegosDisponibles(Juego juegos[]) {
+        int contador = 0;
+        String juegosDisponibles = "";
+        while (juegos[contador] != null) {
+            juegosDisponibles += "\t" + (contador + 1) + ": " + juegos[contador].getNombre() + "\n";
+            contador++;
+        }
+        return juegosDisponibles;
+    }
+    
+    
+
 }
