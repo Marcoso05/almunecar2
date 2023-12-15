@@ -40,6 +40,9 @@ public class Terminal {
     public String getPremio() {
         return Arrays.toString(premiosAsociados);
     }
+    public Premio[] getPremioArray(){
+        return this.premiosAsociados;
+    }
 
     public int getNumTerminal() {
         return numTerminal;

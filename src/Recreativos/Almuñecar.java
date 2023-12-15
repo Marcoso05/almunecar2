@@ -118,7 +118,8 @@ public class Almuñecar {
                                 System.out.println(Colores.RED + "La tarjeta seleccionada no es válida" + Colores.RESET);
 
                             } else {
-                                System.out.println(tarjetas[tarjetaSeleccionada].toString());
+                                System.out.println();
+                                System.out.println(Colores.BLUE + tarjetas[tarjetaSeleccionada].toString().replace("\n", Colores.BLUE + "\n") + Colores.RESET);
                             }
                         }
 
@@ -127,7 +128,7 @@ public class Almuñecar {
                         int seleccion = -1;
                         do {
                             System.out.println("\nEstas son las opciones de los juegos");
-                            System.out.println("1: Ver los juegos\n2: Comprobar si puedo jugar\n3: Jugar");
+                            System.out.println("1: Ver los juegos\n2: Comprobar si puedo jugar\n3: Jugar\n4: Salir");
 
                             System.out.print("Que opcion desea: ");
 
@@ -207,8 +208,8 @@ public class Almuñecar {
                                 case 4:
                                     break;
                                 default:
-                                    System.out.println(Colores.RED+"Opcion no valida"+Colores.RESET);
-                                    
+                                    System.out.println(Colores.RED + "Opcion no valida" + Colores.RESET);
+
                             }
 
                         } while (seleccion != 4);
@@ -216,13 +217,13 @@ public class Almuñecar {
 
                     case 5:
                         do {
-                            System.out.println("\n\tEstas son las opciones de los premios: \n\t1: Ver premios \n\t2: Canjear premios. \n\t3: Ver Stock. \n\t4: Volver.");
-                            System.out.print("Que accion desea realizar: ");
+                            System.out.println("\n\tEstas son las opciones de los premios: \n\t1: Ver premios \n\t2: Canjear premios. \n\t3: Volver.");
+                            System.out.print("\tQue accion desea realizar: ");
                             opcion = teclado.nextInt();
                             switch (opcion) {
                                 case 1:
                                     System.out.println("Estos son los premios disponibles");
-                                    System.out.println(terminales[0].verPremios());
+                                    System.out.println(mostrarNombrePremios(terminales, premios));
                                     break;
                                 case 2:
                                     System.out.print("Introduce tu tarjeta: ");
@@ -237,27 +238,25 @@ public class Almuñecar {
                                             System.out.println("Estos son los premios disponibles");
                                             System.out.println(terminales[0].verPremios());
                                             System.out.print("Que premio desea obtener: ");
-                                            
-                                            premioSeleccionado = teclado.nextInt()-1;
-                                            if (premioSeleccionado >3 || premioSeleccionado <0) {
-                                                    System.out.println(Colores.RED + "El premio seleccionada no es válida" + Colores.RESET);
-                                                } else {
-                                                    terminales[0].canjearPremios(premios[premioSeleccionado], tarjetas[tarjetaSeleccionada]); 
 
-                                                }
+                                            premioSeleccionado = teclado.nextInt() - 1;
+                                            if (premioSeleccionado > 3 || premioSeleccionado < 0) {
+                                                System.out.println(Colores.RED + "El premio seleccionada no es válida" + Colores.RESET);
+                                            } else {
+                                                terminales[0].canjearPremios(premios[premioSeleccionado], tarjetas[tarjetaSeleccionada]);
+
                                             }
                                         }
+                                    }
                                     System.out.println();
                                     break;
                                 case 3:
-                                    
                                     break;
-                                case 4:
-
-                                    break;
+                                default:
+                                    System.out.println(Colores.RED+"Opcion seleccionada no valida" + Colores.RESET);
                             }
-                           
-                        }while (opcion != 4);
+
+                        } while (opcion != 3);
                     case 6:
                         break;
                     default:
@@ -280,7 +279,18 @@ public class Almuñecar {
         }
         return juegosDisponibles;
     }
-    
-    
+
+    public static String mostrarNombrePremios(Terminal terminales[], Premio premios[]) {
+        String resultado = "";
+        Premio prem[] = terminales[0].getPremioArray();
+        int contador = 0;
+        while (contador < premios.length && premios[contador] != null) {
+            if (prem[contador] == premios[contador]) {
+                resultado += "\n\t" + (contador + 1) + ": " + premios[contador].getNombre() + ", tickets necesarios" + premios[contador].getTicketsNecesarios();
+            }
+            contador++;
+        }
+        return resultado;
+    }
 
 }

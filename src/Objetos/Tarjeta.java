@@ -5,6 +5,8 @@
  */
 package Objetos;
 
+import Diseño.Colores;
+
 /**
  *
  * @author developer
