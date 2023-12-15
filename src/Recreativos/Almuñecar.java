@@ -86,7 +86,7 @@ public class Almuñecar {
 
                         System.out.print("Introduzca su tarjeta: ");
 
-                        tarjetaSeleccionada = teclado.nextInt();
+                        tarjetaSeleccionada = teclado.nextInt()-1;
 
                         if (tarjetaSeleccionada < 0 || tarjetaSeleccionada >= tarjetas.length) {
                             System.out.println(Colores.RED + "La tarjeta seleccionada no es válida" + Colores.RESET);
@@ -110,7 +110,7 @@ public class Almuñecar {
                     case 3:
 
                         System.out.print("Introduzca su tarjeta: ");
-                        tarjetaSeleccionada = teclado.nextInt();
+                        tarjetaSeleccionada = teclado.nextInt()-1;
                         if (tarjetaSeleccionada < 0 || tarjetaSeleccionada >= tarjetas.length) {
                             System.out.println(Colores.RED + "La tarjeta seleccionada no es válida" + Colores.RESET);
                         } else {
@@ -119,7 +119,7 @@ public class Almuñecar {
 
                             } else {
                                 System.out.println();
-                                System.out.println(Colores.BLUE + tarjetas[tarjetaSeleccionada].toString().replace("\n", Colores.BLUE + "\n") + Colores.RESET);
+                                System.out.println("\t"+Colores.BLUE + tarjetas[tarjetaSeleccionada].toString().replace("\n", Colores.BLUE + "\n\t") + Colores.RESET);
                             }
                         }
 
@@ -144,7 +144,7 @@ public class Almuñecar {
 
                                     System.out.print("Introduce tu tarjeta: ");
 
-                                    tarjetaSeleccionada = teclado.nextInt();
+                                    tarjetaSeleccionada = teclado.nextInt()-1;
                                     if (tarjetaSeleccionada < 0 || tarjetaSeleccionada >= tarjetas.length) {
                                         System.out.println(Colores.RED + "La tarjeta seleccionada no es válida" + Colores.RESET);
                                     } else {
@@ -177,7 +177,7 @@ public class Almuñecar {
                                 case 3:
                                     System.out.print("Introduce tu tarjeta: ");
 
-                                    tarjetaSeleccionada = teclado.nextInt();
+                                    tarjetaSeleccionada = teclado.nextInt()-1;
                                     if (tarjetaSeleccionada < 0 || tarjetaSeleccionada >= tarjetas.length) {
                                         System.out.println(Colores.RED + "La tarjeta seleccionada no es válida" + Colores.RESET);
                                     } else {
@@ -228,7 +228,7 @@ public class Almuñecar {
                                 case 2:
                                     System.out.print("Introduce tu tarjeta: ");
 
-                                    tarjetaSeleccionada = teclado.nextInt();
+                                    tarjetaSeleccionada = teclado.nextInt()-1;
                                     if (tarjetaSeleccionada < 0 || tarjetaSeleccionada >= tarjetas.length) {
                                         System.out.println(Colores.RED + "La tarjeta seleccionada no es válida" + Colores.RESET);
                                     } else {
