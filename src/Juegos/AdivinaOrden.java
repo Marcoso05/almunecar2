@@ -10,11 +10,12 @@ import java.util.Arrays;
  */
 public class AdivinaOrden {
     
+    static int cont = 0;
+    
     public static void AdivinaOr() {
         Scanner sc = new Scanner(System.in);
         Random r = new Random();
         
-        int cont = 0;
         int input;
         int[] a = new int[10];
         int[] c = new int[10];
@@ -44,5 +45,10 @@ public class AdivinaOrden {
         }
         
         System.out.println("Has acertado: " + cont + "/10.");
-}
+        
+    }
+    
+    public static int ganado() {
+        return cont*10;
+    }
 }
