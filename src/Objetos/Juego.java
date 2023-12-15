@@ -45,9 +45,10 @@ public class Juego {
             System.out.println("No tiene creditos suficientes");
         }
         else{
-            x.setCreditos(x.getCreditos()-this.creditosNecesarios);
-            x.setTickets(x.getTickets()+r.nextInt(95)+5);
             AdivinaOrden.AdivinaOr();
+            x.setCreditos(x.getCreditos()-this.creditosNecesarios);
+            x.setTickets(x.getTickets()+AdivinaOrden.ganado());
+            
         }
     }
     public boolean comprobarCreditosNecesarios(Tarjeta tar) {
