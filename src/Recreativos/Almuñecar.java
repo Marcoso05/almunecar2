@@ -5,6 +5,7 @@ import Objetos.*;
 import Diseño.Colores;
 import java.util.Arrays;
 import java.util.InputMismatchException;
+import Juegos.AdivinaOrden;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -49,7 +50,7 @@ public class Almuñecar {
 
         //Creacion de los pobjetos
         //Juegos
-        juegos[contadorJuegos] = new Juego("Numero", 2);
+        juegos[contadorJuegos] = new Juego("Adivina el orden", 2);
         contadorJuegos++;
         //Premios
         premios[contadorPremios] = new Premio("Osito", 100, 50);
