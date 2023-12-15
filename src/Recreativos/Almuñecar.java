@@ -79,6 +79,10 @@ public class Almuñecar {
 
                         //Crear una nueva tarjeta
                         tarjetas[contadorTarjetas] = terminales[0].crearTarjeta(dineroCargar);
+                        if(tarjetas[contadorTarjetas]!=null ){
+                            System.out.println("\n\t"+Colores.BLUE+ "Tarjeta creada correctamente"+ "\n\t"+Colores.BLUE + tarjetas[contadorTarjetas].toString().replace("\n", Colores.BLUE + "\n\t") + Colores.RESET);
+                            
+                        }
                         contadorTarjetas++;
 
                         break;
@@ -89,19 +93,19 @@ public class Almuñecar {
                         tarjetaSeleccionada = teclado.nextInt()-1;
 
                         if (tarjetaSeleccionada < 0 || tarjetaSeleccionada >= tarjetas.length) {
-                            System.out.println(Colores.RED + "La tarjeta seleccionada no es válida" + Colores.RESET);
+                            System.out.println(Colores.RED + "\nLa tarjeta seleccionada no es válida" + Colores.RESET);
                         } else {
                             if (tarjetas[tarjetaSeleccionada] == null) {
-                                System.out.println(Colores.RED + "La tarjeta seleccionada no es válida" + Colores.RESET);
+                                System.out.println(Colores.RED + "\nLa tarjeta seleccionada no es válida" + Colores.RESET);
                             } else {
                                 System.out.print("Cuánto dinero desea cargar en su tarjeta: ");
                                 dineroCargar = teclado.nextInt();
 
                                 if (dineroCargar <= 0) {
-                                    System.out.println(Colores.RED + "La cantidad de dinero a cargar debe ser positiva" + Colores.RESET);
+                                    System.out.println(Colores.RED + "\nLa cantidad de dinero a cargar debe ser positiva" + Colores.RESET);
                                 } else {
                                     terminales[0].cargarTarjeta(tarjetas[tarjetaSeleccionada], dineroCargar);
-                                    System.out.println("¡Carga exitosa!");
+                                    System.out.println(Colores.BLUE+"\n¡Carga exitosa!"+Colores.RESET);
                                 }
                             }
                         }
@@ -139,6 +143,7 @@ public class Almuñecar {
                                     System.out.println();
                                     System.out.println("Estos son los juegos disponibles");
                                     System.out.println(mostrarJuegosDisponibles(juegos));
+                                    
                                     break;
                                 case 2:
 

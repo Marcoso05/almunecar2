@@ -130,7 +130,7 @@ public class Terminal {
     public void canjearPremios(Premio pre, Tarjeta tar) {
         try {
             if (premioDisponible(pre) && comprobarTiketsNecesarios(pre, tar) && pre.getRecuentoStock() > 0) {
-                tar.setCreditos(tar.getCreditos() - pre.getTicketsNecesarios());
+                tar.setTickets(tar.getCreditos() - pre.getTicketsNecesarios());
                 pre.setRecuentoStock(pre.getRecuentoStock() - 1);
             } else if (!premioDisponible(pre)) {
                 System.out.println(Colores.RED + "El premio no se encuentra disponible" + Colores.RESET);
