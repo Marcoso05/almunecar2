@@ -12,6 +12,15 @@ public class AdivinaOrden {
     
     static int cont = 0;
     
+    /**
+     * Comienza el juego. Se crean un Scanner y Random, se crean
+     * 2 arrays, el primero se rellena de forma aleatoria con números
+     * hasta el 1000, se copia al otro y se ordena. Se pregunta el orden
+     * que se cree que están los números, mostrándose los del array
+     * desordenado y comparándolo con el ordenado. Por cada acierto se
+     * incrementa un contador y se muestra al final.
+     */
+    
     public static void AdivinaOr() {
         Scanner sc = new Scanner(System.in);
         Random r = new Random();
@@ -48,6 +57,11 @@ public class AdivinaOrden {
         
     }
     
+    
+    /**
+     * Devuelve los tickets ganados por el juego
+     * @return Los aciertos multiplicados por 10
+     */
     public static int ganado() {
         return cont*10;
     }
