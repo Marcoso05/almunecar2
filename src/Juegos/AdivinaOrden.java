@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 /**
  *
- * @author developer
+ * @author Aarón Lozano
  */
 public class AdivinaOrden {
     
