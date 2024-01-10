@@ -26,6 +26,7 @@ public class Terminal {
     
     //CONSTRUCTOR
     /**
+     * Constructor del terminal
      * 
      * @param pre1 primer premio del terminal
      * @param pre2 segundo premio del terminal
@@ -40,6 +41,7 @@ public class Terminal {
 
     //GETTER/SETTER
     /**
+     * Poner los premios en el terminal
      * 
      * @param pre premio a añadir
      * @param posicion posicion en la que lo quiero añadir
@@ -49,6 +51,7 @@ public class Terminal {
     }
 
     /**
+     * Obtener los premios en forma de string
      * 
      * @return String de los premios asociados al terminal
      */
@@ -56,6 +59,7 @@ public class Terminal {
         return Arrays.toString(premiosAsociados);
     }
     /**
+     * Obtener los premios en forma de array
      * 
      * @return Array con los premios asociados a un termianl
      */
@@ -64,6 +68,7 @@ public class Terminal {
     }
 
     /**
+     * Obtener el nuemro de terminal
      * 
      * @return numero de identigicador del terminal
      */
@@ -72,6 +77,7 @@ public class Terminal {
     }
 
     /**
+     * Obtener el factor de conversion
      * 
      * @return factor de conversion del terminal
      */
